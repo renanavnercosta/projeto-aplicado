@@ -1,0 +1,14 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 85vh;
+}
+.login-border {
+  background-color: #f8f8ff;
+  border-radius: 5px;
+  justify-content: center;
+  marfin-left: 50px;
+  padding: 20px;
+}
