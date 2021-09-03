@@ -1,5 +1,5 @@
 import Header from '../../componentes/Header';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MultipleSelectChips from './MultipleSelectChips.js';
 import Select from 'react-select';
 import axios from 'axios';
@@ -10,33 +10,39 @@ function initialState() {
 
 const Dashboard = () => {
   const [values, setValues] = useState(initialState);
+  const [selectValue, setSelectValue] = useEffect();
 
-  function getAllDepartments() {
-    // Make a request for a user with a given ID
-    axios
-      .get('http://localhost:5000/departments')
-      .then(function (response) {
-        // handle success
-        departments = response.data.map((itens) => {
-          return {
-            value: itens.name,
-            label: itens.name,
-          };
-        });
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-  }
 
-  getAllDepartments();
-  let departments = []; // array exibido no select
+  useEffect(() =>{
 
-  console.log(departments);
+    //buscar data na api 
+    getAllDepartments();
+    
+  });
+
+  // function getAllDepartments() {
+  //   axios
+  //     .get('http://localhost:5000/departments')
+  //     .then(function (response) {
+  //       // handle success
+  //       departments = response.data.map((itens) => {
+  //         return {
+  //           value: itens.name,
+  //           label: itens.name,
+  //         };
+  //       });
+
+  //       setSelectValue(departments)
+  //     })
+  //     .catch(function (error) {
+  //       // handle error
+  //       console.log(error);
+  //     })
+  //     .then(function () {
+  //       // always executed
+  //     });
+  // }
+
 
   function onChange(event) {
     const { value, name } = event.target;
@@ -47,8 +53,6 @@ const Dashboard = () => {
     });
   }
 
-  const [value, setValue] = useState([]);
-  const [error, setError] = useState('');
   const options = [
     { label: 'Proatividade', value: 1 },
     { label: 'Boa Comunicação', value: 2 },
@@ -71,7 +75,7 @@ const Dashboard = () => {
             marginBottom: '30px',
           }}
         >
-          Home
+          Em dev...
         </h1>
       </div>
 

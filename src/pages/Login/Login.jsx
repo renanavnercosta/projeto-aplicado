@@ -10,25 +10,6 @@ function initialState() {
   return { email: '', password: '' };
 }
 
-function login({ email, password }) {
-  axios
-    .get(`http://localhost:5000/users?email=${email}`)
-    .then(function (response) {
-      const found = response.data.find((item) => {
-        return item.email === email && item.password === password;
-      });
-
-      if (found) {
-        console.log('OK');
-      } else {
-        console.log('NOK');
-      }
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    });
-}
 
 const Login = () => {
   const [values, setValues] = useState(initialState);
